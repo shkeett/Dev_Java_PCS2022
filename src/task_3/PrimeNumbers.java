@@ -19,7 +19,7 @@ public class PrimeNumbers {
         }
         boolean bool = true;
         for (int i = 2; i < number; i++) {
-            for (int j = 2; j < i/Math.pow(i,0.5); j++) {
+            for (int j = 2; j < i; j++) {
                 if (i % j == 0) {
                     bool = false;
                     break;
