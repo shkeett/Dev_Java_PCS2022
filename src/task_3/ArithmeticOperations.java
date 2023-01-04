@@ -6,17 +6,23 @@ package task_3;
  * На основании знака операции необходимо вызывать ранее созданный метод и получать результат операции.
  */
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class ArithmeticOperations {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        operation(2.58, 6.48, "+");
-        System.out.println();
-        operation(2.58, 6.48, "-");
-        System.out.println();
-        operation(2.58, 6.48, "*");
-        System.out.println();
-        operation(2.58, 6.48, "/");
+        var reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Введите первое число:");
+        double number1 = Double.parseDouble(reader.readLine());
+        System.out.println("Введите второе число:");
+        double number2 = Double.parseDouble(reader.readLine());
+        System.out.println("Что вы хотите сделать? Выберите из: +, -, *, /");
+        String operator = reader.readLine();
+
+        operation(number1, number2, operator);
     }
 
     public static void plus(double number1, double number2) {
