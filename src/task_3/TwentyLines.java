@@ -28,6 +28,6 @@ public class TwentyLines {
             System.out.println();
         }
         scanner.close();
-        //Пример
+
     }
 }
