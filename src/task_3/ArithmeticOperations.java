@@ -22,43 +22,49 @@ public class ArithmeticOperations {
         System.out.println("Что вы хотите сделать? Выберите из: +, -, *, /");
         String operator = reader.readLine();
 
-        operation(number1, number2, operator);
+        System.out.println(operation(number1, number2, operator));
     }
 
-    public static void plus(double number1, double number2) {
+    public static double plus(double number1, double number2) {
         double total = number1 + number2;
-        System.out.printf(number1 + " + " + number2 + " = " + "%.3f", total);
+        System.out.print(number1 + " + " + number2 + " = " );
+        return total;
     }
 
-    public static void minus(double number1, double number2) {
+    public static double minus(double number1, double number2) {
         double total = number1 - number2;
-        System.out.printf(number1 + " - " + number2 + " = " + "%.3f", total);
+        System.out.print(number1 + " - " + number2 + " = " );
+        return total;
     }
 
-    public static void multiplication(double number1, double number2) {
+    public static double multiplication(double number1, double number2) {
         double total = number1 * number2;
-        System.out.printf(number1 + " * " + number2 + " = " + "%.3f", total);
+        System.out.print(number1 + " * " + number2 + " = ");
+        return total;
     }
 
-    public static void division(double number1, double number2) {
+    public static double division(double number1, double number2) {
         double total = number1 / number2;
-        System.out.printf(number1 + " / " + number2 + " = " + "%.3f", total);
+        System.out.print(number1 + " / " + number2 + " = " );
+        return total;
     }
 
-    public static void operation(double number1, double number2, String symbol) {
+    public static double operation(double number1, double number2, String symbol) {
+        double result = 0.0;
         switch (symbol) {
             case "+":
-                plus(number1, number2);
+                result = plus(number1, number2);
                 break;
             case "-":
-                minus(number1, number2);
+                result = minus(number1, number2);
                 break;
             case "*":
-                multiplication(number1, number2);
+                result = multiplication(number1, number2);
                 break;
             case "/":
-                division(number1, number2);
+                result = division(number1, number2);
                 break;
         }
+        return result;
     }
 }
