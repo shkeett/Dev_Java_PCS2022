@@ -16,24 +16,25 @@ public class ArithmeticOperations {
 
         var reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Введите первое число:");
-        double number1 = Double.parseDouble(reader.readLine());
-        System.out.println("Введите второе число:");
         double number2 = Double.parseDouble(reader.readLine());
         System.out.println("Что вы хотите сделать? Выберите из: +, -, *, /");
         String operator = reader.readLine();
+        System.out.println("Введите второе число:");
+        double number1 = Double.parseDouble(reader.readLine());
 
-        System.out.println(operation(number1, number2, operator));
+
+        System.out.println(operation(number1, operator, number2));
     }
 
     public static double plus(double number1, double number2) {
         double total = number1 + number2;
-        System.out.print(number1 + " + " + number2 + " = " );
+        System.out.print(number1 + " + " + number2 + " = ");
         return total;
     }
 
     public static double minus(double number1, double number2) {
         double total = number1 - number2;
-        System.out.print(number1 + " - " + number2 + " = " );
+        System.out.print(number1 + " - " + number2 + " = ");
         return total;
     }
 
@@ -45,11 +46,11 @@ public class ArithmeticOperations {
 
     public static double division(double number1, double number2) {
         double total = number1 / number2;
-        System.out.print(number1 + " / " + number2 + " = " );
+        System.out.print(number1 + " / " + number2 + " = ");
         return total;
     }
 
-    public static double operation(double number1, double number2, String symbol) {
+    public static double operation(double number1, String symbol, double number2) {
         double result = 0.0;
         switch (symbol) {
             case "+":
