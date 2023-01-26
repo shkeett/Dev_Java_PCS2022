@@ -43,5 +43,22 @@ public class SumMatrix {
             }
             System.out.println();
         }
+
+
+//          Решение преподователя
+
+//        int tablePif[][] = new int[6][6];
+//        for (int i = 0; i < 5; i++) {
+//            for (int j = 0; j < 5; j++) {
+//                tablePif[i][j]=i*j;
+//                tablePif[i][5]+=tablePif[i][j];
+//                tablePif[5][j]+=tablePif[i][j];
+//                System.out.print(tablePif[i][j]+"\t");
+//            }
+//            System.out.println(tablePif[i][5]);
+//        }
+//        for (int j = 0; j < 5; j++) {
+//            System.out.println(tablePif[5][j] + "\t");
+//        }
     }
 }
