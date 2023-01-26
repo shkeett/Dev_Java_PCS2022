@@ -26,7 +26,7 @@ public class Order {
         for (var car : cars) {
             if (car != null) {
                 if (diller.getAgeDiller() >= 10) {
-                    System.out.println(i + ") Автомобиль " + car.getTitle() + " стоит (с учетом скидки 10%) " + car.getPrice()*(0.9));
+                    System.out.println(i + ") Автомобиль " + car.getTitle() + " стоит (с учетом скидки 10%) " + car.getPrice() * (0.9));
                     i++;
                 } else {
                     System.out.println(i + ") Автомобиль " + car.getTitle() + " стоит " + car.getPrice());
@@ -34,6 +34,8 @@ public class Order {
                 }
             }
         }
+        factory.getAmountCar();
+        System.out.println("------------------------------------------------------------");
         System.out.println("Общая сумма заказа: " + sum);
 
     }
