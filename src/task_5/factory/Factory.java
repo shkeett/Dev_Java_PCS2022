@@ -12,6 +12,7 @@ public class Factory {
         this.listModels = listModels;
         this.diller = diller;
         System.out.print("Завод может изготовить следущие авто: ");
+        System.out.println();
         for (String listModel : listModels) {
             System.out.println(listModel);
         }
