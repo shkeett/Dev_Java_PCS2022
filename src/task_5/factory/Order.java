@@ -6,13 +6,15 @@ public class Order {
     private String models[];
     private int sum = 0;       //общая сумма заказа
     private Car cars[];        //фура пока пустая. Будем ее заполнять автомобилями
+    private Diller diller;
 
 
-    public Order(Factory factory, int count, String[] models) {
+    public Order(Factory factory, int count, String[] models, Diller diller) {
         this.factory = factory;
         this.count = count;
         this.models = models;
         this.cars = new Car[count];
+        this.diller = diller;
         startOrder();
     }
 
@@ -21,11 +23,15 @@ public class Order {
         //fori - для for
 
         int i = 1;
-
         for (var car : cars) {
             if (car != null) {
-                System.out.println(i + ") Автомобиль " + car.getTitle() + " стоит " + car.getPrice());
-                i++;
+                if (diller.getAgeDiller() >= 10) {
+                    System.out.println(i + ") Автомобиль " + car.getTitle() + " стоит (с учетом скидки 10%) " + car.getPrice()*(0.9));
+                    i++;
+                } else {
+                    System.out.println(i + ") Автомобиль " + car.getTitle() + " стоит " + car.getPrice());
+                    i++;
+                }
             }
         }
         System.out.println("Общая сумма заказа: " + sum);

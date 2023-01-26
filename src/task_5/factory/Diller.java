@@ -10,7 +10,8 @@ public class Diller {
     }
 
     void makeOrder(Factory factory, int count, String[] models) {
-        var order = new Order(factory, count, models);
+        Diller diller = new Diller(titleDiller, ageDiller);
+        var order = new Order(factory, count, models, diller);
         order.showInfoOrder();
     }
 
