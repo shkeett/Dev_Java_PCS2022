@@ -25,5 +25,4 @@ class Car {
         this.price = price;
     }
 
-
 }
