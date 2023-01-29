@@ -53,5 +53,21 @@ public class Order {
         }
         System.out.println("------------------------------------------------------------");
     }
+                               // РЕШЕНИЕ ИЗ УРОКА
+
+    void counterOfModels() {
+        for (int i = 0; i < models.length; i++) {  //это цикл по моделям, которые заказали
+            int countAuto = 0;
+            int totalMoney = 0;
+            for (int j = 0; j < cars.length; j++) {  //это цикл по всем созданным машинам
+                if (cars[j] != null) {
+                    if (models[i].equalsIgnoreCase((cars[j].getTitle()))) {
+                        countAuto += 1;
+                        totalMoney += cars[j].getPrice();
+                    }
+                }
+            }
+        }
+    }
 }
 
