@@ -16,5 +16,4 @@ public abstract class BaseSalary {
     public static final double MULTIPLAING_SALARY_ECONOMIST = 2.0;
 
     public abstract double getSalary();
-
 }
