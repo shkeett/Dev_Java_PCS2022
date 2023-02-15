@@ -1,15 +1,7 @@
 package task_9.college;
 
-import java.util.Comparator;
 import java.util.Objects;
 
-/**
- * Сделать коллекцию студентов. Она характеризуется ФИО и средним баллом.
- * При вводе в консоль слова LIST должна выводиться информация о всех студентах и их средней оценке.
- * При вводе команды Sort необходимо спрашивать: ”По какому полю требуется сортировка”.
- * При вводе FIO – сортируем по ФИО.
- * При вводе “GRADE” – сортируем по среднему баллу.
- */
 
 public class Student {
     private String fio;
@@ -55,27 +47,5 @@ public class Student {
     @Override
     public int hashCode() {
         return Objects.hash(fio, averageRating);
-    }
-}
-
-class FIOComparator implements Comparator<Student> {
-
-    @Override
-    public int compare(Student st1, Student st2)  {
-        return st1.getFio().compareTo(st2.getFio());
-    }
-}
-
-class RatingComparator implements Comparator<Student> {
-
-    @Override
-    public int compare(Student st1, Student st2) {
-        if (st1.getAverageRating() == st2.getAverageRating()) {
-            return 0;
-        } else if (st1.getAverageRating() < st2.getAverageRating()) {
-            return -1;
-        } else {
-            return 1;
-        }
     }
 }

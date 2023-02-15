@@ -7,7 +7,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Сделать коллекцию студентов. Она характеризуется ФИО и средним баллом.
+ * При вводе в консоль слова LIST должна выводиться информация о всех студентах и их средней оценке.
+ * При вводе команды Sort необходимо спрашивать: ”По какому полю требуется сортировка”.
+ * При вводе FIO – сортируем по ФИО.
+ * При вводе “GRADE” – сортируем по среднему баллу.
+ */
+
 public class College {
+
     public static void main(String[] args) throws IOException {
         List<Student> studentsList = new ArrayList<>();
 
@@ -19,47 +28,55 @@ public class College {
                 new Student("Смирнов Виталий Викторович", 3.88),
                 new Student("Амосов Сергей Андреевич", 3.85));
 
-
-        var reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Введите LIST для вывода информация о всех студентах и их средней оценке");
         System.out.println("Введите SORT для сортировки");
-        String command = null;
+
+
+        var reader = new BufferedReader(new InputStreamReader(System.in));
         try {
-            command = reader.readLine();
-        } catch (IOException e) {
-            e.getMessage();
-        }
-        if (command != null && command.equalsIgnoreCase("LIST")) {
-            for (Student student : studentsList) {
-                System.out.println("Студент \t" + student.getFio() + "\t Средний балл = " + student.getAverageRating());
-            }
-        } else if (command != null && command.equalsIgnoreCase("SORT")) {
-            var reader2 = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("Введите FIO если сортируем по ФИО");
-            System.out.println("Введите GRADE если сортируем по среднему баллу");
-            String commandSort = null;
-            try {
-                commandSort = reader.readLine();
-            } catch (IOException e) {
-                e.getMessage();
-            }
-            if (commandSort != null && commandSort.equalsIgnoreCase("FIO")) {
-                Collections.sort(studentsList, new FIOComparator());
-                System.out.println("Студенты отсортированы по ФИО:");
-                System.out.println("----------------------------------------------------------------------");
+            String command = reader.readLine();
+
+            if (command != null && command.equalsIgnoreCase("LIST")) {
                 for (Student student : studentsList) {
                     System.out.println("Студент \t" + student.getFio() + "\t Средний балл = " + student.getAverageRating());
                 }
-            } else if (commandSort != null && commandSort.equalsIgnoreCase("GRADE")) {
-                Collections.sort(studentsList, new RatingComparator());
-                System.out.println("Студенты отсортированы по среднему баллу:");
-                System.out.println("----------------------------------------------------------------------");
-                for (Student student : studentsList) {
-                    System.out.println("Студент \t" + student.getFio() + "\t Средний балл = " + student.getAverageRating());
+            } else if (command != null && command.equalsIgnoreCase("SORT")) {
+                var reader2 = new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Введите FIO если сортируем по ФИО");
+                System.out.println("Введите GRADE если сортируем по среднему баллу");
+                try {
+                    String commandSort = reader2.readLine();
+
+                    if (commandSort != null && commandSort.equalsIgnoreCase("FIO")) {
+                        Collections.sort(studentsList, new FIOComparator());
+                        System.out.println("Студенты отсортированы по ФИО:");
+                        System.out.println("----------------------------------------------------------------------");
+                        for (Student student : studentsList) {
+                            System.out.println("Студент \t" + student.getFio() + "\t Средний балл = " + student.getAverageRating());
+                        }
+                    } else if (commandSort != null && commandSort.equalsIgnoreCase("GRADE")) {
+                        Collections.sort(studentsList, new RatingComparator());
+                        System.out.println("Студенты отсортированы по среднему баллу:");
+                        System.out.println("----------------------------------------------------------------------");
+                        for (Student student : studentsList) {
+                            System.out.println("Студент \t" + student.getFio() + "\t Средний балл = " + student.getAverageRating());
+                        }
+                    } else {
+                        System.out.println("Вы ввели неверную команду");
+                    }
+
+                } catch (IOException ex) {
+                    System.out.println("I/O Exception");
+                } finally {
+                    reader2.close();
                 }
+            } else {
+                System.out.println("Вы ввели неверную команду");
             }
-            reader2.close();
+        } catch (IOException ex) {
+            System.out.println("I/O Exception");
+        } finally {
+            reader.close();
         }
-        reader.close();
     }
 }
