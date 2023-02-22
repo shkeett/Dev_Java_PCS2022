@@ -9,6 +9,7 @@ import java.util.List;
 public class ParkingAircraft {
 
     List<Plane> parkingPlane = new ArrayList<>();
+    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
     public void planeInParking() {
         boolean chek = true;
@@ -20,27 +21,33 @@ public class ParkingAircraft {
             System.out.println("\tshowPlane - распечатать все самолеты на стоянке");
             System.out.println("\tEXIT      - выход");
 
-            var plane = new BufferedReader(new InputStreamReader(System.in));
+
             try {
-                String str = plane.readLine();
-                if (str.equalsIgnoreCase("ADD")) {
-                    if (parkingPlane.size() < 5) {
-                        addPlaneInParking();
+                String str = input.readLine();
+                switch (str) {
+                    case "ADD":
+                        if (parkingPlane.size() < 5) {
+                            addPlaneInParking();
+                            showPlane();
+                        } else {
+                            System.out.println("Стоянка заполнена, мест нет");
+                        }
+                        break;
+                    case "exitAll":
+                        showAndRemovePlaneFromParking();
+                        break;
+                    case "exitLast":
+                        showAndRemoveLastPlaneFromParking();
+                        break;
+                    case "showPlane":
                         showPlane();
-                    } else {
-                        System.out.println("Стоянка заполнена, мест нет");
-                    }
-                } else if (str.equalsIgnoreCase("exitAll")) {
-                    showAndRemovePlaneFromParking();
-                } else if (str.equalsIgnoreCase("exitLast")) {
-                    showAndRemoveLastPlaneFromParking();
-                } else if (str.equalsIgnoreCase("showPlane")) {
-                    showPlane();
-                } else if (str.equalsIgnoreCase("EXIT")) {
-                    System.out.println("EXIT");
-                    chek = false;
-                } else {
-                    System.out.println("Вы ввели неправильную команду");
+                        break;
+                    case "EXIT":
+                        System.out.println("Программа закончена EXIT");
+                        chek = false;
+                        break;
+                    default:
+                        System.out.println("Вы ввели неправильную команду");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -50,18 +57,17 @@ public class ParkingAircraft {
 
     public void addPlaneInParking() {
         System.out.println("Введите название самолета");
-        var inputName = new BufferedReader(new InputStreamReader(System.in));
         String planeName = null;
         try {
-            planeName = inputName.readLine();
+            planeName = input.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println("Введите номер самолета");
-        var inputNumber = new BufferedReader(new InputStreamReader(System.in));
+
         String planeNumber = null;
         try {
-            planeNumber = inputNumber.readLine();
+            planeNumber = input.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
