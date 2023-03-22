@@ -178,7 +178,7 @@ public class Calculator extends JFrame {
 
         c.add(panel);
 
-        setSize(700, 400);
+        setSize(650, 370);
         setTitle("Калькулятор v1.0");
         setLocationRelativeTo(null);
         setResizable(false);//запрещаем менять размер окна
@@ -189,6 +189,4 @@ public class Calculator extends JFrame {
     public static void main(String[] args) {
         new Calculator().setVisible(true);
     }
-
-
 }
