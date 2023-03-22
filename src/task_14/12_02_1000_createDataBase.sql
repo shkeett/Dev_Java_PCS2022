@@ -1,0 +1,4 @@
+CREATE DATABASE social_net ENCODING 'UTF-8';
+
+
+
